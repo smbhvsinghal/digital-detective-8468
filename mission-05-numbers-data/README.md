@@ -54,6 +54,7 @@ Verified in the Python interpreter. Every result matches the manual calculation.
 | `int('1010', 2)` | `10` | ✓ Yes |
 | `int('1101', 2)` | `13` | ✓ Yes |
 | `hex(10)` | `0xa` → A | ✓ Yes |
+| `int('A', 16)` | `10` | ✓ Yes |
 | `int('1F', 16)` | `31` | ✓ Yes |
 | `hex(int('1111', 2))` | `0xf` → F | ✓ Yes |
 | `ord('A')` | `65` | ASCII code of uppercase A |
@@ -68,27 +69,35 @@ Python's `bin()` and `hex()` functions add a prefix (`0b` for binary, `0x` for h
 The file `number_converter.py` contains:
 
 ```python
-decimal_input = input("Enter a decimal number: ")
+decimal_input = input("Enter a positive decimal number: ")
 
 try:
     number = int(decimal_input)
-    binary_result = bin(number)
-    hex_result = hex(number)
-    print(f"Decimal   : {number}")
-    print(f"Binary    : {binary_result}")
-    print(f"Hexadecimal: {hex_result}")
+    if number == 0:
+        print("Zero is not allowed. Please enter a positive whole number greater than 0.")
+    elif number < 0:
+        print("Negative numbers are not allowed. Please enter a positive whole number greater than 0.")
+    else:
+        binary_result = bin(number)
+        hex_result = hex(number)
+        print(f"Decimal    : {number}")
+        print(f"Binary     : {binary_result}")
+        print(f"Hexadecimal: {hex_result}")
 except ValueError:
-    print("Please enter a valid whole number.")
+    print("Invalid input. Please enter a valid positive whole number.")
 ```
 
 **Test results (actual output from running the program):**
 
-| Input | Binary output | Hexadecimal output |
-|-------|--------------|-------------------|
-| 42 | `0b101010` | `0x2a` |
-| 255 | `0b11111111` | `0xff` |
-| 13 | `0b1101` | `0xd` |
-| 1000 | `0b1111101000` | `0x3e8` |
+| Input | Behaviour / Output |
+|-------|--------------------|
+| `13` | `Decimal: 13`, `Binary: 0b1101`, `Hexadecimal: 0xd` |
+| `255` | `Decimal: 255`, `Binary: 0b11111111`, `Hexadecimal: 0xff` |
+| `42` | `Decimal: 42`, `Binary: 0b101010`, `Hexadecimal: 0x2a` |
+| `1000` | `Decimal: 1000`, `Binary: 0b1111101000`, `Hexadecimal: 0x3e8` |
+| `0` | Rejected: `Zero is not allowed. Please enter a positive whole number greater than 0.` |
+| `-5` | Rejected: `Negative numbers are not allowed. Please enter a positive whole number greater than 0.` |
+| `abc` | Handled gracefully: `Invalid input. Please enter a valid positive whole number.` |
 
 The `bin()` function converts a decimal integer to a string of 0s and 1s prefixed with `0b`. The `hex()` function converts a decimal integer to a string of hex digits prefixed with `0x`. The `int()` function converts the user's text input into a proper integer so that the conversion functions can work on it.
 

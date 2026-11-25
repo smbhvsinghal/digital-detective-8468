@@ -13,6 +13,10 @@ Review the complete repository, verify that all required files and commits exist
 - Confirmed the `update-about` branch and Pull Request #1 are visible on GitHub.
 - Reviewed the root README to ensure it covers all required items.
 - Completed this final report README and pushed it.
+- Applied final audit corrections:
+  - Added the missing hexadecimal `A` Python verification (`int('A', 16)` → `10`) to `mission-05-numbers-data/README.md`.
+  - Updated `mission-05-numbers-data/number_converter.py` to accept only positive integers and reject `0`, negative numbers, and non-numeric input.
+  - Executed and recorded all seven `number_converter.py` tests (`13`, `255`, `42`, `1000`, `0`, `-5`, `abc`) and `hello.py`.
 
 ## 3. Commands / tools used
 
@@ -68,14 +72,17 @@ $ python3 mission-04-programs/hello.py
 Hello from Python
 ```
 
-**number_converter.py (four tests):**
+**number_converter.py (seven tests):**
 
-| Input | Binary | Hexadecimal |
-|-------|--------|-------------|
-| 42 | 0b101010 | 0x2a |
-| 255 | 0b11111111 | 0xff |
-| 13 | 0b1101 | 0xd |
-| 1000 | 0b1111101000 | 0x3e8 |
+| Input | Behaviour / Output |
+|-------|--------------------|
+| `13` | `Decimal: 13`, `Binary: 0b1101`, `Hexadecimal: 0xd` |
+| `255` | `Decimal: 255`, `Binary: 0b11111111`, `Hexadecimal: 0xff` |
+| `42` | `Decimal: 42`, `Binary: 0b101010`, `Hexadecimal: 0x2a` |
+| `1000` | `Decimal: 1000`, `Binary: 0b1111101000`, `Hexadecimal: 0x3e8` |
+| `0` | Rejected: `Zero is not allowed. Please enter a positive whole number greater than 0.` |
+| `-5` | Rejected: `Negative numbers are not allowed. Please enter a positive whole number greater than 0.` |
+| `abc` | Handled gracefully: `Invalid input. Please enter a valid positive whole number.` |
 
 ### Commit history (all on `main`)
 
@@ -126,8 +133,8 @@ Hello from Python
 - [x] Terminal operations, file management, flags and pipes are explained
 - [x] Operating system, processes, paths, storage and permissions are covered
 - [x] Compiler and interpreter are compared
-- [x] Number conversions include working and Python verification
-- [x] The number_converter.py program runs successfully with at least three test values
+- [x] Number conversions include working and Python verification (including `int('A', 16)`)
+- [x] The number_converter.py program validates positive integers and passes all seven test cases (`13`, `255`, `42`, `1000`, `0`, `-5`, `abc`)
 - [x] Git commit history, branch and Pull Request activity are visible
 - [x] LAN, MAN, WAN, DNS, router, protocols and client-server are explained
 - [x] The root README explains the project and how to run the converter
