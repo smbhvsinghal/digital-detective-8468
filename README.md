@@ -57,6 +57,20 @@ Through this assignment I learned that computers process everything as binary nu
 
 ---
 
+## My Learning
+
+This section was added on the `update-about` branch as part of Mission 6.
+
+Here are three things I learned while working through this assignment:
+
+1. **The Terminal gives precise control.** Using commands like `pwd`, `ls`, and `cat` made me realise that the graphical file manager is just a visual layer on top of these underlying operations. The Terminal is faster and more flexible for many tasks.
+
+2. **Binary and hexadecimal are not mysterious.** Once I understood that binary is just base-2 counting (each column is a power of 2), converting numbers by hand became straightforward. Hexadecimal is a compact way to write binary — four bits map to one hex digit.
+
+3. **Git branches let you work safely.** Creating a branch means changes do not immediately affect the main copy of the project. A Pull Request then provides a step to review and discuss changes before merging them, which is why teams use this workflow for collaborative coding.
+
+---
+
 ## Commit approach
 
 Each mission was completed, documented and committed separately before moving to the next mission. This approach makes the Git history readable and matches the assignment's commit rules.
