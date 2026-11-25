@@ -1,0 +1,2 @@
+First line: Terminal practice file for the Digital Detective assignment.
+Second line: Learning how to append text without overwriting the first line.
